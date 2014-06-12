@@ -401,6 +401,18 @@ public class BM25Searcher {
 				contentArray.put("上课地点: 六教6A211");
 				cur.put("content", contentArray);
 				textSpecialAns.put(cur);
+			}else{
+				if ((queryString.matches(".*SOA.*") || queryString.matches(".*服务为中心的软件.*"))  && queryString.matches(".*课.*")){
+					JSONObject cur = new JSONObject();
+					cur.put("title", "2013-2014学年度SOA上课信息");
+					JSONArray contentArray = new JSONArray();
+					contentArray.put("课程名称: 以服务为中心的软件开发设计与实现");
+					contentArray.put("上课教师: 唐杰");
+					contentArray.put("上课时间: 每周三下午第一大节(13:30-15:05)");
+					contentArray.put("上课地点: 六教6A201");
+					cur.put("content", contentArray);
+					textSpecialAns.put(cur);
+				}
 			}
 			
 			ans.put("textSpecial", textSpecialAns);
@@ -518,14 +530,14 @@ public class BM25Searcher {
 		String ansString14 = search.BM25Search("type:rrdata 校庆", 40);
 		String ansString15 = search.BM25Search("type:rrdata 关于网上借用教室", 40);*/
 		//System.out.println(ansString);
-		String ansString = search.BM25Search("校历", 40);
-		System.out.println(ansString);
-		/*String ansString = search.BM25Search("PX", 100);
+		//String ansString = search.BM25Search("校历", 40);
+		//System.out.println(ansString);
+		String ansString = search.BM25Search("SOA上课", 100);
 		System.out.println(ansString);
 		String topString = search.getTop(10);
 		System.out.println(topString);
 		String relatedString = search.getRlated("选课", 10);
-		System.out.println(relatedString);*/
+		System.out.println(relatedString);
 		
 		//String getString = search.getQuery("type:人人 type:pdf ");
 		//System.out.println(getString);
